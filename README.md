@@ -1,7 +1,7 @@
 # ox_inventory_durple
 scss file for my durple inventory
 
-table><tr><td><h3 align='center'>Legal Notices</h2></tr></td>
+<table><tr><td><h3 align='center'>Legal Notices</h2></tr></td>
 <tr><td>
 Ox Inventory
 
