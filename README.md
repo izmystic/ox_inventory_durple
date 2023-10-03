@@ -1,6 +1,8 @@
 # ox_inventory_durple
 scss file for my durple inventory
 
+![](https://cdn.discordapp.com/attachments/1158840110654173184/1158840126718353458/image.png?ex=651db578&is=651c63f8&hm=6c96ffaedc7aa708acd46e03733a857401aa3a826e604884e7fffe89daeb9b09&)
+
 <table><tr><td><h3 align='center'>Legal Notices</h2></tr></td>
 <tr><td>
 Ox Inventory
