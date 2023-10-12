@@ -3,6 +3,7 @@ $textColor: #c1c2c5;
 $mainFont: Roboto;
 
 $secondaryColor: #22232C; /* durple #7 */ 
+$secondaryColorHighlight: #33343F; /* durple #3 */ 
 $secondaryColorLight: rgba(0, 0, 0, 0.5); /* isnt even used? */
 $secondaryColorDark: #33343F; /* durple #3 */ 
 
@@ -11,7 +12,7 @@ $backgroundColor: #1F2027; /* durple #8 */
 $gridCols: 5;
 $gridRows: 5;
 $gridSize: 10.2vh;
-$gridGap: 4px;
+$gridGap: 2px;
 $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
 
 body {
@@ -51,11 +52,13 @@ input[type='number']::-webkit-outer-spin-button {
   appearance: none;
 }
 
-.MuiMenuItem-root > div > p {
-  padding: 0 !important;
+.app-wrapper {
+  height: 100%;
+  width: 100%;
+  color: white;
 }
 
-.MuiMenu-list {
+.context-menu-list {
   min-width: 200px;
   background-color: $mainColor;
   color: $textColor;
@@ -63,12 +66,29 @@ input[type='number']::-webkit-outer-spin-button {
   border-color: rgba(0, 0, 0, 0.2);
   border-style: inset;
   border-width: 1px;
-  font-size: 16px !important;
+  border-radius: 4px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.MuiMenuItem-gutters {
-  padding: 4px 16px !important;
-  font-size: 16px !important;
+.context-menu-item  {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: $textColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:active {
+    transform: none;
+  }
+  &:hover {
+    background-color: $secondaryColorHighlight;
+    cursor: pointer;
+  }
 }
 
 .tooltip-description {
@@ -153,7 +173,45 @@ button:active {
 }
 
 .useful-controls-dialog {
+  background-color: $mainColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $textColor;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 4px;
+  gap: 16px;
+}
+
+.useful-controls-dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.useful-controls-dialog-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   font-size: 18px;
+}
+
+.useful-controls-dialog-close {
+  width: 25px;
+  height: 25px;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  fill: $textColor;
+  &:hover {
+    background-color: $secondaryColorHighlight;
+    cursor: pointer;
+  }
 }
 
 .useful-controls-content-wrapper {
@@ -162,15 +220,30 @@ button:active {
   gap: 20px;
 }
 
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
 .useful-controls-button {
   position: absolute !important;
   bottom: 25px;
   right: 25px;
   transition: 200ms !important;
+  border: none;
+  color: white;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: white;
   border-radius: 5% !important;
   background-color: $secondaryColor !important;
   &:hover {
     background-color: $secondaryColorDark !important;
+    cursor: pointer;
   }
 }
 
@@ -183,20 +256,7 @@ button:active {
 }
 
 // Dialog is used fro useful controls window
-.MuiDialogContent-root {
-  background-color: $mainColor;
-  color: $textColor;
-}
 
-.MuiDialogTitle-root {
-  background-color: $mainColor;
-  color: $textColor;
-}
-
-.MuiDialogActions-root {
-  background-color: $mainColor;
-  color: $textColor;
-}
 
 // inventory grids
 .inventory-grid-wrapper {
@@ -321,23 +381,23 @@ button:active {
   }
 }
 
-// slot tooltip
-.MuiTooltip-tooltip {
-  background-color: $mainColor !important;
-  min-width: 200px !important;
-  color: $textColor !important;
-  font-family: $mainFont !important;
-  border-radius: 4px !important;
-  border-color: rgba(0, 0, 0, 0.2) !important;
-  border-style: inset !important;
-  border-width: 1px !important;
-}
 
 .tooltip-wrapper {
+  pointer-events: none;
   display: flex;
+  background-color: $mainColor;
+  width: 200px;
+  padding: 8px;
   flex-direction: column;
+  min-width: 200px;
+  color: $textColor;
+  font-family: $mainFont;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: inset;
+  border-width: 1px;
   p {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
   }
 }
@@ -443,13 +503,49 @@ button:active {
 .durability-bar {
   background: #33343F;
   height: 3px;
+  border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .weight-bar {
   background: #33343F;
   height: 0.8vh;
-  margin-top: 2px;
-  border-radius: 5%;
+  border-radius: 0.25rem;
   overflow: hidden;
+}
+
+.transition-fade-enter {
+  opacity: 0;
+}
+
+.transition-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.transition-fade-exit {
+  opacity: 1;
+}
+
+.transition-fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.transition-slide-up-enter {
+  transform: translateY(200px)
+}
+
+.transition-slide-up-enter-active {
+  transform: translateY(0px);
+  transition: all 200ms;
+}
+
+.transition-slide-up-exit {
+  transform: translateY(0px);
+}
+
+.transition-slide-up-exit-active {
+  transform: translateY(200px);
+  transition: all 200ms;
 }
