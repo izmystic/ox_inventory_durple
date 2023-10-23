@@ -3,6 +3,11 @@ scss file for my ox_inventory redesign
 
 ![](https://cdn.discordapp.com/attachments/1158840110654173184/1158840126718353458/image.png?ex=651db578&is=651c63f8&hm=6c96ffaedc7aa708acd46e03733a857401aa3a826e604884e7fffe89daeb9b09&)
 
+## build instructions
+- download the [source code](https://github.com/overextended/ox_inventory/archive/refs/heads/main.zip) of ox_inventory
+- put the included index.scss file in `ox_inventory/web/src`
+- make a new terminal in the web directory and run `pnpm i` & `pnpm build`
+
 <table><tr><td><h3 align='center'>Legal Notices</h2></tr></td>
 <tr><td>
 Ox Inventory
