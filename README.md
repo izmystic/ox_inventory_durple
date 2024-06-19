@@ -1,7 +1,6 @@
 # ox_inventory_durple
 scss file for my ox_inventory redesign
-
-![](https://cdn.discordapp.com/attachments/1158840110654173184/1158840126718353458/image.png?ex=651db578&is=651c63f8&hm=6c96ffaedc7aa708acd46e03733a857401aa3a826e604884e7fffe89daeb9b09&)
+![bd67b726-3341-4625-acc8-db09850ad4c2_png_176ac5ae-9a5a-4b80-a098-8223ed6b8d72cover](https://github.com/izmystic/ox_inventory_durple/assets/72127044/ed1f6298-73e1-4e47-ab9f-518d55de9d38)
 
 ## build instructions
 - download the [source code](https://github.com/overextended/ox_inventory/archive/refs/heads/main.zip) of ox_inventory
